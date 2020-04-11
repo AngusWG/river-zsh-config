@@ -46,13 +46,13 @@ fi
 # install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
 	echo "install oh-my-zsh..."
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # git clone this project;
 if [ ! -d $ZSH_CUSTOM ]; then
 	echo "clone $ZSH_CUSTOM ..."
-	git clone https://github.com/revir/river-zsh-config.git $ZSH_CUSTOM || {
+	git clone https://github.com/AngusWG/river-zsh-config.git $ZSH_CUSTOM || {
 		printf "Error: git clone river-zsh-config failed."
 		exit 1
 	}
