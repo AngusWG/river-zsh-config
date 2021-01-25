@@ -123,7 +123,12 @@ if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
 	cat ${ZSH_CUSTOM}/zza_zshrc.sh >> ~/.zshrc
 fi
 
-if [ ! -f $HOME/.vimrc ]; then 
+# 修改为zza zshrc 配置
+echo "change zshrc to zza zshrc config"
+cp ~/.zshrc ~/.zshrc.bak
+cat ${ZSH_CUSTOM}/zza_zshrc.sh >> ~/.zshrc
+
+if [ ! -f $HOME/.vimrc ]; then
 	cp ${ZSH_CUSTOM}/.vimrc ~/
 	echo "Add .vimrc for home."
 fi

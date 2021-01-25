@@ -4,7 +4,7 @@ This is my custom zsh theme.
 
 # autorun
 
-    sh -c "$(curl -fsSL  https://github.com/AngusWG/river-zsh-config/master/install.sh)"
+    sh -c "$(curl -fsSL  https://github.com/AngusWG/river-zsh-config/blob/master/install.sh)"
 
 **you need to run twice of this command.** . 
 **then `source ~/.zshrc`.**
