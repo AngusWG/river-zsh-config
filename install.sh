@@ -34,6 +34,9 @@ sysinstall git
 sysinstall tmux
 sysinstall fzf
 
+if which dnf >/dev/null 2>&1; then
+	$useroot dnf install util-linux-user   # which provides chsh
+fi
 # install sed on mac
 if which brew >/dev/null 2>&1; then
 	if ! which gsed >/dev/null 2>&1; then
@@ -106,7 +109,7 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 		# cat ~/.zshrc | tr '\n' '\r' | sed -e 's/\rplugins=(\r  /\rplugins=(\r  python node nvm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions /'  | tr '\r' '\n' > ~/.zshrc.tmp
 		# mv ~/.zshrc.tmp ~/.zshrc
 
-		sed -i 's/plugins=(git)/plugins=(git python node nvm npm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions tmux)/' ~/.zshrc
+		sed -i 's/plugins=(git)/plugins=(common-aliases git python node nvm npm z extract kubectl zsh-syntax-highlighting zsh-autosuggestions tmux)/' ~/.zshrc
 
 		echo "NOTICE: edited ~/.zshrc, remember to run source ~/.zshrc by yourself!"
 	else
@@ -120,7 +123,7 @@ if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
 	cat ${ZSH_CUSTOM}/zza_zshrc.sh >> ~/.zshrc
 fi
 
-if [ ! -f $HOME/.tmux.conf ]; then 
-	cp .tmux.conf ~/
-	echo "Add .tmux.conf for home."
+if [ ! -f $HOME/.vimrc ]; then 
+	cp ${ZSH_CUSTOM}/.vimrc ~/
+	echo "Add .vimrc for home."
 fi
