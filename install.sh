@@ -31,8 +31,6 @@ sysinstall()
 
 sysinstall zsh
 sysinstall git
-sysinstall tmux
-sysinstall fzf
 
 if which dnf >/dev/null 2>&1; then
 	$useroot dnf install util-linux-user   # which provides chsh
@@ -132,3 +130,16 @@ if [ ! -f $HOME/.vimrc ]; then
 	cp ${ZSH_CUSTOM}/.vimrc ~/
 	echo "Add .vimrc for home."
 fi
+
+# tmux
+if [ ! -d $HOME/.tmux ]; then
+	git clone https://github.com/tmux/tmux.git $HOME/.tmux
+	git clone https://github.com/tmux/tmux.git
+	cd $HOME/.tmux
+	sh autogen.sh
+	./configure && make
+
+# fzf
+if [ ! -d $HOME/.fzf ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
