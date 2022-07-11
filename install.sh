@@ -75,14 +75,14 @@ if [ ! -d ${ZSH_CUSTOM}/plugins/zsh-autosuggestions ]; then
 fi
 
 # install fzf
-if [! -d ~/.fzf ]: then
+if [ ! -d ~/.fzf ]; then
 	echo "clone fzf"
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
 fi
 
 # tmux config
-if [ ! ~/.tmux.conf ]: then
+if [ ! ~/.tmux.conf ]; then
 	echo "copy ~/.tmux.conf"
 	cp tmux.conf  ~/.tmux.conf
 fi
@@ -125,13 +125,14 @@ if ! grep 'zsh-syntax-highlighting' ~/.zshrc >/dev/null 2>&1; then
 	fi
 fi
 
-# 加入home end，以及小键盘的支持
-if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
-	echo "Add some key-binds for home, end and other keys."
-	cat ${ZSH_CUSTOM}/key-binds.sh >> ~/.zshrc
-fi
+# # 加入home end，以及小键盘的支持
+# if ! grep ':key-binds-for-home-end-and-others' ~/.zshrc >/dev/null 2>&1; then
+# 	echo "Add some key-binds for home, end and other keys."
+# 	cat ${ZSH_CUSTOM}/key-binds.sh >> ~/.zshrc
+# fi
 
+echo $HOME/.tmux.conf
 if [ ! -f $HOME/.tmux.conf ]; then 
-	cp .tmux.conf ~/
-	echo "Add .tmux.conf for home."
+	echo "Add .tmux.conf to home."
+	cp $ZSH_CUSTOM/tmux.conf $HOME/.tmux.conf
 fi
