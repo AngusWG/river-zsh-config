@@ -74,6 +74,18 @@ if [ ! -d ${ZSH_CUSTOM}/plugins/zsh-autosuggestions ]; then
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 fi
 
+# install fzf
+if [! -d ~/.fzf ]: then
+	echo "clone fzf"
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+fi
+
+# tmux config
+if [ ! ~/.tmux.conf ]: then
+	echo "copy ~/.tmux.conf"
+	cp tmux.conf  ~/.tmux.conf
+fi
 
 # change .zshrc theme
 if ! grep 'ZSH_THEME="river"' ~/.zshrc >/dev/null 2>&1; then
