@@ -32,6 +32,7 @@ sysinstall()
 sysinstall zsh
 sysinstall git
 sysinstall tmux
+sysinstall trash-cli
 
 # install sed on mac
 if which brew >/dev/null 2>&1; then
@@ -42,6 +43,16 @@ if which brew >/dev/null 2>&1; then
 	fi
 fi
 
+if ! command -v trash-empty >/dev/null 2>&1; then
+  echo "没有安装 trash-cli"
+else
+  if crontab -l | grep "trash-empty 7"; then
+    echo "已存在 trash-cli 的 crontab 任务"
+  else
+    (crontab -l ; echo "@daily $(which trash-empty) 7") | crontab -
+    echo "已添加 trash-cli 的 crontab 任务"
+  fi
+fi
 
 # install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
