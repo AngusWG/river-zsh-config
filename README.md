@@ -4,8 +4,13 @@ This is my custom zsh theme.
 
 ## autorun
 
-    sh -c "$(curl -fsSL  https://raw.githubusercontent.com/AngusWG/river-zsh-config/master/install.sh)"
+```bash
+sh -c "$(curl -fsSL  https://raw.githubusercontent.com/AngusWG/river-zsh-config/master/install.sh)"
+sh -c "$(curl -fsSL  https://raw.githubusercontent.com/AngusWG/river-zsh-config/master/install.sh)"
+source ~/.zshrc
+```
 
+**No sudo** .
 **you need to run twice of this command.** .
 **then `source ~/.zshrc`.**
 
